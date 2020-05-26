@@ -1,0 +1,15 @@
+<div>
+  <label>{{ label }}</label>
+  <input
+    type="text"
+    [placeholder]="placeholder"
+    [formControl]="ngControl.control"
+    [class.is-invalid]="ngControl.invalid"
+    (input)="onInput.emit($event)"
+    (blur)="onBlur.emit($event)"
+    (focus)="onFocus.emit($event)"
+  />
+</div>
+<ng-container *ngFor="let error of errors">
+  <div *ngIf="ngControl.hasError(error.type)">{{ error.message }}</div>
+</ng-container>

@@ -1,0 +1,24 @@
+<nav class="navbar bg-dark">
+  <ul class="container">
+    <li>
+      <a
+        class="navbar-item"
+        href="#"
+        routerLink="/"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="active"
+        >Home</a
+      >
+    </li>
+    <li>
+      <a
+        class="navbar-item"
+        href="#"
+        routerLink="/companies"
+        routerLinkActive="active"
+        >Companies</a
+      >
+    </li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>

@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Home</h1>
+  <form [formGroup]="form">
+    <app-input-text
+      [errors]="[{ type: 'required', message: 'required' }]"
+      formControlName="control"
+    ></app-input-text>
+  </form>
+</div>
