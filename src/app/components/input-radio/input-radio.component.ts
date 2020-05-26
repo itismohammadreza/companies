@@ -11,20 +11,18 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { InputError } from 'src/app/models/input-error';
 
 @Component({
-  selector: 'app-input-text',
-  templateUrl: './input-text.component.html',
-  styleUrls: ['./input-text.component.scss'],
+  selector: 'app-input-radio',
+  templateUrl: './input-radio.component.html',
+  styleUrls: ['./input-radio.component.scss'],
 })
-export class InputTextComponent implements OnInit, ControlValueAccessor {
+export class InputRadioComponent implements OnInit, ControlValueAccessor {
   constructor(@Optional() @Self() public ngControl?: NgControl) {
-    this.ngControl.valueAccessor = this;
+    if (this.ngControl) this.ngControl.valueAccessor = this;
   }
-  @Input() placeholder: string = '';
+  @Input() items: string[] = [];
   @Input() label: string = '';
   @Input() errors: InputError[];
-  @Output() onInput = new EventEmitter();
-  @Output() onBlur = new EventEmitter();
-  @Output() onFocus = new EventEmitter();
+  @Output() onChange = new EventEmitter();
 
   controlOnChange: (value?: any) => void;
   controlOnTouched: () => void;
@@ -46,4 +44,6 @@ export class InputTextComponent implements OnInit, ControlValueAccessor {
   getId() {
     return Math.random().toString(36).substr(2, 9);
   }
+
+  getGroupName() {}
 }

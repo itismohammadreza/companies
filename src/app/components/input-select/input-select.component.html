@@ -1,0 +1,14 @@
+<label>{{ label }}</label>
+<div class="select-container">
+  <select
+    class="form-control"
+    [formControl]="ngControl?.control"
+    [class.is-invalid]="ngControl?.invalid"
+  >
+    <option value="" selected hidden>Please select</option>
+    <option value="1">My first option</option>
+    <option value="2">Lorem ipsum</option>
+    <option value="4">A slightly longer option than the rest</option>
+    <option value="5">Fourth option</option>
+  </select>
+</div>

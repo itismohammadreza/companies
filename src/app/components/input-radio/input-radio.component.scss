@@ -1,0 +1,58 @@
+@import "../../../assets/styles/variable.scss";
+
+.radio-container {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+
+  [type="radio"] {
+    &:checked,
+    &:not(:checked) {
+      position: absolute;
+      right: -9999px;
+    }
+
+    &:checked + label,
+    &:not(:checked) + label {
+      position: relative;
+      padding-right: 28px;
+      cursor: pointer;
+      display: inline-block;
+      color: #666;
+    }
+
+    &:checked + label:before,
+    &:not(:checked) + label:before {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      border: 3px solid $secondary-input-color;
+      border-radius: 100%;
+      background: #fff;
+      transform: translateY(-50%);
+    }
+    &:checked + label:after,
+    &:not(:checked) + label:after {
+      content: "";
+      position: absolute;
+      top: 7px;
+      right: 5px;
+      width: 10px;
+      height: 10px;
+      background: $primary-input-color;
+      border-radius: 100%;
+      transition: all 0.2s ease;
+    }
+    &:not(:checked) + label:after {
+      opacity: 0;
+      transform: scale(0);
+    }
+    &:checked + label:after {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}

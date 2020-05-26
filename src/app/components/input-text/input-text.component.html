@@ -1,15 +1,14 @@
-<div>
-  <label>{{ label }}</label>
-  <input
-    type="text"
-    [placeholder]="placeholder"
-    [formControl]="ngControl.control"
-    [class.is-invalid]="ngControl.invalid"
-    (input)="onInput.emit($event)"
-    (blur)="onBlur.emit($event)"
-    (focus)="onFocus.emit($event)"
-  />
-</div>
+<label>{{ label }}</label>
+<input
+  class="form-control"
+  type="text"
+  [placeholder]="placeholder"
+  [formControl]="ngControl?.control"
+  [class.is-invalid]="ngControl?.invalid"
+  (input)="onInput.emit($event)"
+  (blur)="onBlur.emit($event)"
+  (focus)="onFocus.emit($event)"
+/>
 <ng-container *ngFor="let error of errors">
   <div *ngIf="ngControl.hasError(error.type)">{{ error.message }}</div>
 </ng-container>

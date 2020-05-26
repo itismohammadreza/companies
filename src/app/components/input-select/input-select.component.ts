@@ -7,17 +7,19 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { NgControl, ControlValueAccessor } from '@angular/forms';
 import { InputError } from 'src/app/models/input-error';
 
 @Component({
-  selector: 'app-input-text',
-  templateUrl: './input-text.component.html',
-  styleUrls: ['./input-text.component.scss'],
+  selector: 'app-input-select',
+  templateUrl: './input-select.component.html',
+  styleUrls: ['./input-select.component.scss'],
 })
-export class InputTextComponent implements OnInit, ControlValueAccessor {
+export class InputSelectComponent implements OnInit, ControlValueAccessor {
   constructor(@Optional() @Self() public ngControl?: NgControl) {
-    this.ngControl.valueAccessor = this;
+    if (this.ngControl) this.ngControl.valueAccessor = this;
+    console.log(this.ngControl);
+    
   }
   @Input() placeholder: string = '';
   @Input() label: string = '';
@@ -43,7 +45,9 @@ export class InputTextComponent implements OnInit, ControlValueAccessor {
 
   setDisabledState?(isDisabled: boolean): void {}
 
+  
   getId() {
     return Math.random().toString(36).substr(2, 9);
   }
+
 }

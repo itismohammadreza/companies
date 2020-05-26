@@ -1,0 +1,28 @@
+.select-container {
+  position: relative;
+  height: 45px;
+  &:after {
+    content: " ";
+    display: block;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 0;
+    width: 0;
+    position: absolute;
+    border-top: 7px solid #909090;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    pointer-events: none;
+  }
+  select {
+    padding: 0 20px;
+    width: 100%;
+    height: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    &::-ms-expand {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@import "./fonts/fonts.scss";
+@import "./variable.scss";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: IRANSans;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  direction: rtl;
+}
+
+.container {
+  padding: 0 15px;
+}
+
+.form-control {
+  border: 1px solid $secondary-input-color;
+  border-radius: 3px;
+  outline: none;
+  transition: border-color 0.4s, box-shadow 0.2s;
+  &.is-invalid{
+    border-color: red;
+    box-shadow: 0 0 0 2px lighten(red, 30);
+  }
+  &:hover {
+    border-color: darken($secondary-input-color, 50);
+  }
+  &:focus {
+    box-shadow: 0 0 0 2px lighten($primary-input-color, 30);
+  }
+}
