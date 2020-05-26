@@ -45,5 +45,12 @@ export class InputRadioComponent implements OnInit, ControlValueAccessor {
     return Math.random().toString(36).substr(2, 9);
   }
 
-  getGroupName() {}
+  getGroupName() {
+    var result = '';
+    var characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (var i = 0; i < 7; i++)
+      result += characters.charAt(Math.floor(Math.random() * 62));
+    return result;
+  }
 }

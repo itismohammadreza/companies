@@ -18,15 +18,13 @@ import { InputError } from 'src/app/models/input-error';
 export class InputSelectComponent implements OnInit, ControlValueAccessor {
   constructor(@Optional() @Self() public ngControl?: NgControl) {
     if (this.ngControl) this.ngControl.valueAccessor = this;
-    console.log(this.ngControl);
-    
   }
+  @Input() items: string[] = [];
   @Input() placeholder: string = '';
   @Input() label: string = '';
   @Input() errors: InputError[];
-  @Output() onInput = new EventEmitter();
-  @Output() onBlur = new EventEmitter();
-  @Output() onFocus = new EventEmitter();
+
+  @Output() onChange = new EventEmitter();
 
   controlOnChange: (value?: any) => void;
   controlOnTouched: () => void;
@@ -45,9 +43,7 @@ export class InputSelectComponent implements OnInit, ControlValueAccessor {
 
   setDisabledState?(isDisabled: boolean): void {}
 
-  
   getId() {
     return Math.random().toString(36).substr(2, 9);
   }
-
 }

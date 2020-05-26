@@ -1,12 +1,8 @@
 <label>{{ label }}</label>
 <div>
-  <div class="radio-container" *ngFor="let item of items; let i = index">
-    <input type="radio" [id]="getId()" name="radio-group" />
-    <label [for]="getId()">Orange</label>
-  </div>
-  <div class="radio-container">
-    <input type="radio" id="test2" name="radio-group" />
-    <label for="test2">Orange</label>
+  <div class="radio-container" *ngFor="let item of items;">
+    <input type="radio" [id]="getId()" [name]="getGroupName()" />
+    <label [for]="getId()">{{ item }}</label>
   </div>
 </div>
 <ng-container *ngFor="let error of errors">

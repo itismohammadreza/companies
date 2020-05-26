@@ -1,7 +1,8 @@
-<label>{{ label }}</label>
+<label [for]="getId()">{{ label }}</label>
 <input
   class="form-control"
   type="text"
+  [id]="getId()"
   [placeholder]="placeholder"
   [formControl]="ngControl?.control"
   [class.is-invalid]="ngControl?.invalid"
