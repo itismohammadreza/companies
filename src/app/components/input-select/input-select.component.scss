@@ -21,6 +21,9 @@
     height: 100%;
     -webkit-appearance: none;
     -moz-appearance: none;
+    option{
+      font-family: IRANSans;
+    }
     &::-ms-expand {
       display: none;
     }

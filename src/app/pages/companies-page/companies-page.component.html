@@ -1,3 +1,14 @@
 <div class="container">
-  <h1>Companies</h1>
+  <h1>کمپانی ها</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+    <input formControlName="id" type="hidden" />
+    <app-input-text label="عنوان" formControlName="title"></app-input-text>
+    <app-input-text label="تلفن" formControlName="phone"></app-input-text>
+    <app-input-select
+      label="نوع"
+      formControlName="type"
+      [items]="['محصولات غذایی', 'لوازم خانگی', 'لوازم الکترونیکی']"
+    ></app-input-select>
+    <button class="btn" type="submit">ثبت</button>
+  </form>
 </div>
