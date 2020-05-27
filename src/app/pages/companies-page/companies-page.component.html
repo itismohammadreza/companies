@@ -1,7 +1,6 @@
 <div class="container">
   <h1>کمپانی ها</h1>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <!-- <input formControlName="id" type="hidden" /> -->
     <app-input-text
       label="عنوان"
       formControlName="title"
@@ -27,8 +26,12 @@
     ></app-input-select>
     <button class="btn" [disabled]="form.invalid" type="submit">ثبت</button>
   </form>
-  <app-data-table
-    [config]="tableConfig"
-    (rowClicked)="onRowClick($event)"
-  ></app-data-table>
+  <div class="data">
+    <app-data-table
+      *ngIf="tableConfig.data.length != 0"
+      [config]="tableConfig"
+      (rowClicked)="onRowClick($event)"
+    ></app-data-table>
+    <p *ngIf="tableConfig.data.length == 0">موردی وجود ندارد.</p>
+  </div>
 </div>

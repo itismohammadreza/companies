@@ -6,7 +6,7 @@
   [placeholder]="placeholder"
   [formControl]="ngControl?.control"
   [class.is-invalid]="
-    ngControl?.invalid && (ngControl.touched || ngControl.dirty)
+    ngControl?.invalid && (ngControl?.touched || ngControl?.dirty)
   "
   (input)="onInput.emit($event)"
   (blur)="onBlur.emit($event)"
@@ -16,7 +16,8 @@
   <div
     class="error-text"
     *ngIf="
-      ngControl.hasError(error.type) && (ngControl.touched || ngControl.dirty)
+      ngControl?.hasError(error.type) &&
+      (ngControl?.touched || ngControl?.dirty)
     "
   >
     {{ error.message }}

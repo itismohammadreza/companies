@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>کمپانی ها</h1>
+  <h1>محصولات کمپانی {{ (company | async)?.title }}</h1>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <input formControlName="companyId" type="hidden" />
     <app-input-text
@@ -11,7 +11,11 @@
       ]"
     ></app-input-text>
 
-  
+    <app-input-datepicker
+      formControlName="title"
+      [errors]="[{ type: 'required', message: 'این فیلد الزامیست' }]"
+    ></app-input-datepicker>
+
     <app-input-radio
       *ngFor="let item of states; let i = index"
       name="productStates"
@@ -23,5 +27,11 @@
 
     <button class="btn" [disabled]="form.invalid" type="submit">ثبت</button>
   </form>
-  <app-data-table [config]="tableConfig"></app-data-table>
+  <div class="data">
+    <app-data-table
+      *ngIf="tableConfig.data.length != 0"
+      [config]="tableConfig"
+    ></app-data-table>
+    <p *ngIf="tableConfig.data.length == 0">موردی وجود ندارد.</p>
+  </div>
 </div>

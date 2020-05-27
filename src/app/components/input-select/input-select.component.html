@@ -5,7 +5,7 @@
     [id]="getId()"
     [formControl]="ngControl?.control"
     [class.is-invalid]="
-      ngControl?.invalid && (ngControl.touched || ngControl.dirty)
+      ngControl?.invalid && (ngControl?.touched || ngControl?.dirty)
     "
   >
     <option value="" selected hidden *ngIf="placeholder">
@@ -20,7 +20,7 @@
   <div
     class="error-text"
     *ngIf="
-      ngControl.hasError(error.type) && (ngControl.touched || ngControl.dirty)
+      ngControl?.hasError(error.type) && (ngControl?.touched || ngControl?.dirty)
     "
   >
     {{ error.message }}

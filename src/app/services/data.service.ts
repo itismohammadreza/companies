@@ -13,11 +13,13 @@ export class DataService {
   getCompanies(): Observable<Company[]> {
     return this.http.get<Company[]>('http://localhost:3000/companies');
   }
-  addCompany(company: Company): Observable<Company[]> {
-    return this.http.post<Company[]>(
-      'http://localhost:3000/companies',
-      company
+  getCompanyById(companyId: number): Observable<Company> {
+    return this.http.get<Company>(
+      'http://localhost:3000/companies/' + companyId
     );
+  }
+  addCompany(company: Company): Observable<Company> {
+    return this.http.post<Company>('http://localhost:3000/companies', company);
   }
   getProdcutsByCompanyId(companyId: number): Observable<Product[]> {
     return this.http.get<Product[]>(

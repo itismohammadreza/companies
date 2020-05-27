@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 import { DataService } from 'src/app/services/data.service';
 import { Company } from 'src/app/models/company';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-companies-page',
@@ -14,11 +15,12 @@ export class CompaniesPageComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private dataService: DataService) {}
   tableConfig = {
     header: {
+      id: 'شناسه',
       title: 'عنوان',
       phone: 'تلفن تماس',
       type: 'نوع',
     },
-    data: [],
+    data: new Array<Company>(),
   };
 
   companiesSubscription: Subscription;
@@ -44,15 +46,30 @@ export class CompaniesPageComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.dataService
-      .addCompany(this.form.value as Company)
-      .subscribe((result) => {
+    const company = this.form.value as Company;
+    if (!this.isDuplicate(company)) {
+      this.dataService.addCompany(company).subscribe((result) => {
         this.tableConfig.data.push(result);
+        this.form.reset();
       });
+    } else {
+      alert('این مورد قبلا ثبت شده است.');
+    }
   }
 
   onRowClick(event) {
     this.router.navigate(['products', event.id]);
+  }
+
+  isDuplicate(company: Company): boolean {
+    return this.tableConfig.data.find(
+      (c) =>
+        c.phone == company.phone &&
+        c.title == company.title &&
+        c.type == company.type
+    )
+      ? true
+      : false;
   }
 
   ngOnDestroy(): void {

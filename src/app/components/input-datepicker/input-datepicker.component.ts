@@ -2,14 +2,11 @@ import {
   Component,
   OnInit,
   Input,
-  Output,
-  EventEmitter,
   Optional,
   Self,
 } from '@angular/core';
-import * as moment from 'jalali-moment';
-import { IDatePickerConfig } from 'ng2-jalali-date-picker';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
+
 import { InputError } from 'src/app/models/input-error';
 
 @Component({
@@ -25,57 +22,11 @@ export class InputDatepickerComponent implements OnInit, ControlValueAccessor {
   @Input() label: string = '';
   @Input() errors: InputError[] = [];
   @Input() placeholder: string = '';
-  @Input() date: moment.Moment = undefined;
-  @Output() onChange = new EventEmitter();
 
   controlOnChange: (value?: any) => void;
   controlOnTouched: () => void;
-  dateObject = moment('1395-11-22', 'jYYYY,jMM,jDD').locale('fa');
-  // _date: moment.Moment;
-  config: IDatePickerConfig = {
-    disableKeypress: true,
-    closeOnSelect: true,
-    openOnClick: true,
-    openOnFocus: true,
-    allowMultiSelect: false,
-    showTwentyFourHours: true,
-    showGoToCurrent: true,
-    hideOnOutsideClick: true,
-    locale: moment.locale('fa'),
-  };
 
-  _miladiMonths = [
-    'ژانویه ',
-    'فوریه ',
-    'مارس',
-    'آوریل',
-    'می',
-    'ژوئن',
-    'جولای',
-    'آگوست',
-    'سپتامبر',
-    'اکتبر',
-    'نوامبر',
-    'دسامبر',
-  ];
-  _months = [
-    'فروردین',
-    'اردیبهشت',
-    'خرداد',
-    'تیر',
-    'مرداد',
-    'شهریور',
-    'مهر',
-    'آبان',
-    'آذر',
-    'دی',
-    'بهمن',
-    'اسفند',
-  ];
-
-  ngOnInit(): void {
-    // if (this.date) this._date = this.date;
-  }
+  ngOnInit(): void {}
 
   writeValue(obj: any): void {}
 
@@ -91,23 +42,5 @@ export class InputDatepickerComponent implements OnInit, ControlValueAccessor {
 
   getId() {
     return Math.random().toString(36).substr(2, 9);
-  }
-
-  _onChange(date) {
-    let dateObj = date._d;
-    let result = {
-      day: date.date(),
-      month: date.month() + 1,
-      year: date.year(),
-      strMonth: this._months[date.month()],
-      miladiDay: dateObj.getDate(),
-      miladiMonth: dateObj.getMonth() + 1,
-      miladiYear: dateObj.getFullYear(),
-      miladiStrMonth: this._miladiMonths[dateObj.getMonth()],
-      dateObj: dateObj,
-      momentObj: date,
-    };
-    this.onChange.emit(result);
-    this.onChange.emit();
   }
 }

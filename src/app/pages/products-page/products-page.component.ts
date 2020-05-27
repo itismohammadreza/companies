@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { DataService } from 'src/app/services/data.service';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription, Observable } from 'rxjs';
+
+import { DataService } from 'src/app/services/data.service';
 import { Product } from 'src/app/models/product';
-import { Subscription } from 'rxjs';
+import { Company } from 'src/app/models/company';
 
 @Component({
   selector: 'app-products-page',
@@ -15,15 +17,19 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     private dataService: DataService,
     private route: ActivatedRoute
   ) {}
+
+  company: Observable<Company>;
   productsSubscription: Subscription;
   states = ['فعال', 'غیرفعال'];
   tableConfig = {
     header: {
+      id: 'شناسه',
       title: 'عنوان',
       companyId: 'شناسه کمپانی',
       state: 'وضعیت',
+      createDate: 'تاریخ تولید',
     },
-    data: [],
+    data: new Array<Product>(),
   };
 
   form = new FormGroup({
@@ -38,20 +44,36 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     let companyId = +this.route.snapshot.paramMap.get('companyId');
+    this.company = this.dataService.getCompanyById(companyId);
     this.form.get('companyId').setValue(companyId);
     this.productsSubscription = this.dataService
       .getProdcutsByCompanyId(companyId)
       .subscribe((products) => {
-        this.tableConfig.data = products || [];
+        this.tableConfig.data = products;
       });
   }
 
   onSubmit() {
-    this.dataService
-      .addProduct(this.form.value as Product)
-      .subscribe((result) => {
+    const prodcut = this.form.value as Product;
+    if (!this.isDuplicate(prodcut)) {
+      this.dataService.addProduct(prodcut).subscribe((result) => {
         this.tableConfig.data.push(result);
+        this.form.reset();
       });
+    } else {
+      alert('این مورد قبلا ثبت شده است.');
+    }
+  }
+
+  isDuplicate(prodcut: Product): boolean {
+    return this.tableConfig.data.find(
+      (c) =>
+        c.createDate == prodcut.createDate &&
+        c.title == prodcut.title &&
+        c.state == prodcut.state
+    )
+      ? true
+      : false;
   }
 
   ngOnDestroy(): void {

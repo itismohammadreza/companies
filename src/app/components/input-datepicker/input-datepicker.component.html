@@ -1,25 +1,18 @@
 <label [attr.for]="getId()">{{ label }}</label>
 <input
+  type="date"
   class="form-control"
-  autocomplete="false"
-  theme="dp-material"
-  class="form-control"
-  type="text"
-  mode="day"
-  dpDayPicker
-  [(ngModel)]="dateObject"
-  [placeholder]="placeholder"
-  (onChange)="_onChange($event)"
+  [formControl]="ngControl?.control"
   [id]="getId()"
   [class.is-invalid]="
-    ngControl?.invalid && (ngControl.touched || ngControl.dirty)
+    ngControl?.invalid && (ngControl?.touched || ngControl?.dirty)
   "
 />
 <ng-container *ngFor="let error of errors">
   <div
     class="error-text"
     *ngIf="
-      ngControl.hasError(error.type) && (ngControl.touched || ngControl.dirty)
+      ngControl.hasError(error.type) && (ngControl?.touched || ngControl?.dirty)
     "
   >
     {{ error.message }}

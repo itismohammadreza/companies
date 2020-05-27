@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { DataService } from 'src/app/services/data.service';
-import * as moment from 'jalali-moment';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-  constructor(private dataService: DataService) {}
-
+  constructor() {}
   form = new FormGroup({
     control: new FormControl(null, [Validators.required]),
   });
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form.valueChanges.subscribe((result) => {
+      console.log(result);
+    });
+  }
 }

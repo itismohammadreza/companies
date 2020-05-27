@@ -1,6 +1,24 @@
 <div class="container">
   <h1>خــــانه</h1>
   <form [formGroup]="form">
-    <app-input-datepicker formControlName="control"></app-input-datepicker>
+    <app-input-datepicker
+      formControlName="control"
+      [errors]="[{ type: 'required', message: 'این فیلد الزامیست' }]"
+    ></app-input-datepicker>
   </form>
+
+  <div class="jumbotron">
+    <p>
+      پنل کاربری مدیریت کمپانی ها و محصولات، ساخته شده با فریمورک انگولار 9.
+    </p>
+    <hr />
+    <div>
+      <a class="btn" [routerLink]="['/companies']">
+        جهت مشاهده کمپانی ها کلیک کنید
+      </a>
+    </div>
+    <small>
+      محمدرضا شهبازی - تماس : 09391886476
+    </small>
+  </div>
 </div>
