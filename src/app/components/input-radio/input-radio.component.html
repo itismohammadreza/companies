@@ -1,10 +1,11 @@
-<label>{{ label }}</label>
-<div>
-  <div class="radio-container" *ngFor="let item of items;">
-    <input type="radio" [id]="getId()" [name]="getGroupName()" />
-    <label [for]="getId()">{{ item }}</label>
-  </div>
+<div class="radio-container">
+  <input
+    [formControl]="ngControl?.control"
+    type="radio"
+    [id]="inputId"
+    [value]="value"
+    [name]="name"
+  />
+  <label [for]="inputId">{{ label }}</label>
 </div>
-<ng-container *ngFor="let error of errors">
-  <div *ngIf="ngControl.hasError(error.type)">{{ error.message }}</div>
-</ng-container>
+

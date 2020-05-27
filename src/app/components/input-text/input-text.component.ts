@@ -21,7 +21,7 @@ export class InputTextComponent implements OnInit, ControlValueAccessor {
   }
   @Input() placeholder: string = '';
   @Input() label: string = '';
-  @Input() errors: InputError[];
+  @Input() errors: InputError[] = [];
   @Output() onInput = new EventEmitter();
   @Output() onBlur = new EventEmitter();
   @Output() onFocus = new EventEmitter();

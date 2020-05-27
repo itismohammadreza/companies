@@ -1,0 +1,24 @@
+table {
+  border-collapse: separate !important;
+  border-spacing: 0;
+  width: 100%;
+  margin-top: 30px;
+  border: solid #ccc 1px;
+  border-left: none;
+  border-top: none;
+  border-radius: 3px;
+  tr {
+    * {
+      padding: 10px;
+      border-top: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+    }
+    &:hover {
+      cursor: pointer;
+      background: #ececec;
+    }
+    th {
+      background: #ececec;
+    }
+  }
+}

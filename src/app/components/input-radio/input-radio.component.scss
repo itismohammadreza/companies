@@ -29,7 +29,7 @@
       top: 50%;
       width: 20px;
       height: 20px;
-      border: 3px solid $secondary-input-color;
+      border: 3px solid $secondary-color;
       border-radius: 100%;
       background: #fff;
       transform: translateY(-50%);
@@ -42,12 +42,12 @@
       right: 5px;
       width: 10px;
       height: 10px;
-      background: $primary-input-color;
+      background: $primary-color;
       border-radius: 100%;
       transition: all 0.2s ease;
     }
     &:not(:checked) + label:after {
-      opacity: 0;
+      // opacity: 0;
       transform: scale(0);
     }
     &:checked + label:after {

@@ -1,14 +1,34 @@
 <div class="container">
   <h1>کمپانی ها</h1>
-  <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
-    <input formControlName="id" type="hidden" />
-    <app-input-text label="عنوان" formControlName="title"></app-input-text>
-    <app-input-text label="تلفن" formControlName="phone"></app-input-text>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- <input formControlName="id" type="hidden" /> -->
+    <app-input-text
+      label="عنوان"
+      formControlName="title"
+      [errors]="[
+        { type: 'required', message: 'این فیلد الزامیست' },
+        { type: 'minlength', message: 'حداقل 3 کاراکتر وارد کنید' }
+      ]"
+    ></app-input-text>
+    <app-input-text
+      label="تلفن"
+      formControlName="phone"
+      placeholder="xxx-xxxxxxxx"
+      [errors]="[
+        { type: 'required', message: 'این فیلد الزامیست' },
+        { type: 'pattern', message: 'لطفا شماره تلفن صحیح وارد کنید' }
+      ]"
+    ></app-input-text>
     <app-input-select
       label="نوع"
       formControlName="type"
       [items]="['محصولات غذایی', 'لوازم خانگی', 'لوازم الکترونیکی']"
+      [errors]="[{ type: 'required', message: 'این فیلد الزامیست' }]"
     ></app-input-select>
-    <button class="btn" type="submit">ثبت</button>
+    <button class="btn" [disabled]="form.invalid" type="submit">ثبت</button>
   </form>
+  <app-data-table
+    [config]="tableConfig"
+    (rowClicked)="onRowClick($event)"
+  ></app-data-table>
 </div>

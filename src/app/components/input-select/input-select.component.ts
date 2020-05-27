@@ -22,7 +22,7 @@ export class InputSelectComponent implements OnInit, ControlValueAccessor {
   @Input() items: string[] = [];
   @Input() placeholder: string = '';
   @Input() label: string = '';
-  @Input() errors: InputError[];
+  @Input() errors: InputError[] = [];
 
   @Output() onChange = new EventEmitter();
 

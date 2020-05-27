@@ -6,8 +6,16 @@ import {
   Input,
   Output,
   EventEmitter,
+  AfterViewInit,
 } from '@angular/core';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  NgControl,
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  FormControl,
+} from '@angular/forms';
 import { InputError } from 'src/app/models/input-error';
 
 @Component({
@@ -16,18 +24,22 @@ import { InputError } from 'src/app/models/input-error';
   styleUrls: ['./input-radio.component.scss'],
 })
 export class InputRadioComponent implements OnInit, ControlValueAccessor {
-  constructor(@Optional() @Self() public ngControl?: NgControl) {
+  constructor(
+    private fb: FormBuilder,
+    @Optional() @Self() public ngControl?: NgControl
+  ) {
     if (this.ngControl) this.ngControl.valueAccessor = this;
   }
-  @Input() items: string[] = [];
-  @Input() label: string = '';
-  @Input() errors: InputError[];
-  @Output() onChange = new EventEmitter();
 
-  controlOnChange: (value?: any) => void;
-  controlOnTouched: () => void;
+  @Input() label: string = '';
+  @Input() inputId: string = '';
+  @Input() value: string = '';
+  @Input() name: string = '';
 
   ngOnInit(): void {}
+  
+  controlOnChange: (value?: any) => void;
+  controlOnTouched: () => void;
 
   writeValue(obj: any): void {}
 
@@ -40,17 +52,4 @@ export class InputRadioComponent implements OnInit, ControlValueAccessor {
   }
 
   setDisabledState?(isDisabled: boolean): void {}
-
-  getId() {
-    return Math.random().toString(36).substr(2, 9);
-  }
-
-  getGroupName() {
-    var result = '';
-    var characters =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (var i = 0; i < 7; i++)
-      result += characters.charAt(Math.floor(Math.random() * 62));
-    return result;
-  }
 }

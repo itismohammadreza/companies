@@ -1,0 +1,63 @@
+<!-- <input
+  autocomplete="false"
+  theme="dp-material"
+  class="form-control"
+  mode="day"
+  [dpDayPicker]="config"
+  [(ngModel)]="_date"
+  [placeholder]="placeholder"
+  [disabled]="disabled"
+  [minDate]="minDate"
+  [maxDate]="maxDate"
+  [minTime]="minTime"
+  [maxTime]="maxTime"
+  (onChange)="_onChange($event)"
+  (open)="_onOpen()"
+  (close)="_onClose()"
+  (onGoToCurrent)="_onGoToCurrent()"
+  (onLeftNav)="_onLeftNav()"
+  (onRightNav)="_onRightNav()"
+  (focus)="_onFocus()"
+  (blur)="_onBlur()"
+/> -->
+
+<label [attr.for]="getId()">{{ label }}</label>
+<input
+  class="form-control"
+  autocomplete="false"
+  theme="dp-material"
+  class="form-control"
+  type="text"
+  mode="day"
+  [dpDayPicker]="config"
+  [(ngModel)]="_date"
+  [placeholder]="placeholder"
+  [disabled]="disabled"
+  [minDate]="minDate"
+  [maxDate]="maxDate"
+  [minTime]="minTime"
+  [maxTime]="maxTime"
+  (onChange)="_onChange($event)"
+  (open)="onOpen.emit()"
+  (close)="onClose.emit()"
+  (onGoToCurrent)="onGoToCurrent.emit()"
+  (onLeftNav)="onLeftNav.emit()"
+  (onRightNav)="onRightNav.emit()"
+  [id]="getId()"
+  [class.is-invalid]="
+    ngControl?.invalid && (ngControl.touched || ngControl.dirty)
+  "
+  (input)="onInput.emit($event)"
+  (blur)="onBlur.emit($event)"
+  (focus)="onFocus.emit($event)"
+/>
+<ng-container *ngFor="let error of errors">
+  <div
+    class="error-text"
+    *ngIf="
+      ngControl.hasError(error.type) && (ngControl.touched || ngControl.dirty)
+    "
+  >
+    {{ error.message }}
+  </div>
+</ng-container>

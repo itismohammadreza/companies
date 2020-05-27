@@ -1,1 +1,27 @@
-<p>products-page works!</p>
+<div class="container">
+  <h1>کمپانی ها</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input formControlName="companyId" type="hidden" />
+    <app-input-text
+      label="عنوان"
+      formControlName="title"
+      [errors]="[
+        { type: 'required', message: 'این فیلد الزامیست' },
+        { type: 'minlength', message: 'حداقل 3 کاراکتر وارد کنید' }
+      ]"
+    ></app-input-text>
+
+  
+    <app-input-radio
+      *ngFor="let item of states; let i = index"
+      name="productStates"
+      [value]="item"
+      [label]="item"
+      formControlName="state"
+      [inputId]="i"
+    ></app-input-radio>
+
+    <button class="btn" [disabled]="form.invalid" type="submit">ثبت</button>
+  </form>
+  <app-data-table [config]="tableConfig"></app-data-table>
+</div>

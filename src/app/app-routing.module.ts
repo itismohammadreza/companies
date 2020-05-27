@@ -14,7 +14,7 @@ export const routes: Routes = [
     component: CompaniesPageComponent,
   },
   {
-    path: ':companyId/products',
+    path: 'products/:companyId',
     component: ProductsPageComponent,
   },
 ];

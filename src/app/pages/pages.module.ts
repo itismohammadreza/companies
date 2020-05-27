@@ -4,7 +4,8 @@ import {
   NO_ERRORS_SCHEMA,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { PAGES } from '.';
 import { ComponentsModule } from '../components/components.module';
@@ -14,9 +15,9 @@ import { ComponentsModule } from '../components/components.module';
   exports: [PAGES],
   imports: [
     CommonModule,
-    FormsModule,
     ReactiveFormsModule,
     ComponentsModule,
+    HttpClientModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })

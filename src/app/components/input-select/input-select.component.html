@@ -4,7 +4,9 @@
     class="form-control"
     [id]="getId()"
     [formControl]="ngControl?.control"
-    [class.is-invalid]="ngControl?.invalid"
+    [class.is-invalid]="
+      ngControl?.invalid && (ngControl.touched || ngControl.dirty)
+    "
   >
     <option value="" selected hidden *ngIf="placeholder">
       {{ placeholder }}
@@ -15,5 +17,12 @@
   </select>
 </div>
 <ng-container *ngFor="let error of errors">
-  <div *ngIf="ngControl.hasError(error.type)">{{ error.message }}</div>
+  <div
+    class="error-text"
+    *ngIf="
+      ngControl.hasError(error.type) && (ngControl.touched || ngControl.dirty)
+    "
+  >
+    {{ error.message }}
+  </div>
 </ng-container>

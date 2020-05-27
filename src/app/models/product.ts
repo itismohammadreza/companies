@@ -2,8 +2,8 @@ export type ProductState = 'فعال' | 'غیر فعال';
 
 export class Product {
   id: number;
-  title: string;
   companyId: number;
+  title: string;
   createDate: Date;
   state: ProductState;
 }

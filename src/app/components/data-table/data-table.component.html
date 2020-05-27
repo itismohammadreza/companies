@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let col of cols">{{ config.header[col] }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      class="data-row"
+      *ngFor="let item of config.data"
+      (click)="onRowClick(item)"
+    >
+      <td *ngFor="let col of cols">{{ item[col] }}</td>
+    </tr>
+  </tbody>
+</table>
