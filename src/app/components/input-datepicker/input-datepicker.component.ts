@@ -22,28 +22,16 @@ export class InputDatepickerComponent implements OnInit, ControlValueAccessor {
     this.ngControl.valueAccessor = this;
   }
 
-  @Input() disabled: boolean = false;
   @Input() label: string = '';
   @Input() errors: InputError[] = [];
   @Input() placeholder: string = '';
-  @Input() minDate: moment.Moment | string = undefined;
-  @Input() maxDate: moment.Moment | string = undefined;
-  @Input() minTime: moment.Moment | string = undefined;
-  @Input() maxTime: moment.Moment | string = undefined;
   @Input() date: moment.Moment = undefined;
   @Output() onChange = new EventEmitter();
-  @Output() onOpen = new EventEmitter();
-  @Output() onClose = new EventEmitter();
-  @Output() onGoToCurrent = new EventEmitter();
-  @Output() onLeftNav = new EventEmitter();
-  @Output() onRightNav = new EventEmitter();
-  @Output() onBlur = new EventEmitter();
-  @Output() onFocus = new EventEmitter();
-  @Output() onInput = new EventEmitter();
 
   controlOnChange: (value?: any) => void;
   controlOnTouched: () => void;
-  _date: moment.Moment;
+  dateObject = moment('1395-11-22', 'jYYYY,jMM,jDD').locale('fa');
+  // _date: moment.Moment;
   config: IDatePickerConfig = {
     disableKeypress: true,
     closeOnSelect: true,
@@ -86,7 +74,7 @@ export class InputDatepickerComponent implements OnInit, ControlValueAccessor {
   ];
 
   ngOnInit(): void {
-    if (this.date) this._date = this.date;
+    // if (this.date) this._date = this.date;
   }
 
   writeValue(obj: any): void {}
@@ -120,5 +108,6 @@ export class InputDatepickerComponent implements OnInit, ControlValueAccessor {
       momentObj: date,
     };
     this.onChange.emit(result);
+    this.onChange.emit();
   }
 }

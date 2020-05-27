@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products-page',
   templateUrl: './products-page.component.html',
   styleUrls: ['./products-page.component.scss'],
 })
-export class ProductsPageComponent implements OnInit {
+export class ProductsPageComponent implements OnInit, OnDestroy {
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute
   ) {}
-
+  productsSubscription: Subscription;
   states = ['فعال', 'غیرفعال'];
   tableConfig = {
     header: {
@@ -27,7 +28,7 @@ export class ProductsPageComponent implements OnInit {
 
   form = new FormGroup({
     companyId: new FormControl(),
-    // createDate: new FormControl(null),
+    createDate: new FormControl(null),
     title: new FormControl(null, [
       Validators.required,
       Validators.minLength(3),
@@ -38,9 +39,11 @@ export class ProductsPageComponent implements OnInit {
   ngOnInit(): void {
     let companyId = +this.route.snapshot.paramMap.get('companyId');
     this.form.get('companyId').setValue(companyId);
-    this.dataService.getProdcutsByCompanyId(companyId).subscribe((products) => {
-      this.tableConfig.data = products || [];
-    });
+    this.productsSubscription = this.dataService
+      .getProdcutsByCompanyId(companyId)
+      .subscribe((products) => {
+        this.tableConfig.data = products || [];
+      });
   }
 
   onSubmit() {
@@ -49,5 +52,9 @@ export class ProductsPageComponent implements OnInit {
       .subscribe((result) => {
         this.tableConfig.data.push(result);
       });
+  }
+
+  ngOnDestroy(): void {
+    this.productsSubscription.unsubscribe();
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
-
+import * as moment from 'jalali-moment';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -11,7 +11,7 @@ export class HomePageComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   form = new FormGroup({
-    control: new FormControl('asdasddd', [Validators.required]),
+    control: new FormControl(null, [Validators.required]),
   });
 
   ngOnInit(): void {}
