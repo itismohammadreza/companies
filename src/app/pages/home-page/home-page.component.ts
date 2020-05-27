@@ -7,12 +7,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class HomePageComponent implements OnInit {
   constructor() {}
-  form = new FormGroup({
-    control: new FormControl(null, [Validators.required]),
-  });
-  ngOnInit(): void {
-    this.form.valueChanges.subscribe((result) => {
-      console.log(result);
-    });
-  }
+
+  ngOnInit(): void {}
 }

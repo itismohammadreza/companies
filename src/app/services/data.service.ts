@@ -10,23 +10,23 @@ import { Observable } from 'rxjs';
 export class DataService {
   constructor(private http: HttpClient) {}
 
+  apiUrl = 'http://localhost:3000';
+  
   getCompanies(): Observable<Company[]> {
-    return this.http.get<Company[]>('http://localhost:3000/companies');
+    return this.http.get<Company[]>(`${this.apiUrl}/companies`);
   }
   getCompanyById(companyId: number): Observable<Company> {
-    return this.http.get<Company>(
-      'http://localhost:3000/companies/' + companyId
-    );
+    return this.http.get<Company>(`${this.apiUrl}/companies/${companyId}`);
   }
   addCompany(company: Company): Observable<Company> {
-    return this.http.post<Company>('http://localhost:3000/companies', company);
+    return this.http.post<Company>(`${this.apiUrl}/companies`, company);
   }
   getProdcutsByCompanyId(companyId: number): Observable<Product[]> {
     return this.http.get<Product[]>(
-      'http://localhost:3000/products?companyId=' + companyId
+      `${this.apiUrl}/products?companyId=${companyId}`
     );
   }
   addProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>('http://localhost:3000/products', product);
+    return this.http.post<Product>(`${this.apiUrl}/products`, product);
   }
 }

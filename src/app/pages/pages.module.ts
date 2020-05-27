@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { PAGES } from '.';
 import { ComponentsModule } from '../components/components.module';
-import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [PAGES],
@@ -19,7 +18,6 @@ import { AppRoutingModule } from '../app-routing.module';
     ReactiveFormsModule,
     ComponentsModule,
     HttpClientModule,
-    AppRoutingModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })

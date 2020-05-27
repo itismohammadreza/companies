@@ -1,8 +1,26 @@
 {
   "companies": [
-   
+    {
+      "title": "asda",
+      "phone": "0215454545",
+      "type": "لوازم الکترونیکی",
+      "id": 1
+    }
   ],
   "products": [
-   
+    {
+      "companyId": 1,
+      "createDate": null,
+      "title": "2020-05-15",
+      "state": "غیرفعال",
+      "id": 1
+    },
+    {
+      "companyId": 1,
+      "createDate": "2020-05-08",
+      "title": "asdasdas",
+      "state": "غیرفعال",
+      "id": 2
+    }
   ]
 }
