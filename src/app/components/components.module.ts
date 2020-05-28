@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { COMPONENTS } from '.';
@@ -17,6 +17,7 @@ import { COMPONENTS } from '.';
     HttpClientModule,
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     BrowserModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],

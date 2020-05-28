@@ -34,12 +34,12 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
 
   form = new FormGroup({
     companyId: new FormControl(),
-    createDate: new FormControl(null),
+    createDate: new FormControl(null, [Validators.required]),
     title: new FormControl(null, [
       Validators.required,
       Validators.minLength(3),
     ]),
-    state: new FormControl(null, Validators.required),
+    state: new FormControl(null, [Validators.required]),
   });
 
   ngOnInit(): void {
@@ -54,9 +54,9 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    const prodcut = this.form.value as Product;
-    if (!this.isDuplicate(prodcut)) {
-      this.dataService.addProduct(prodcut).subscribe((result) => {
+    const product = this.form.value as Product;
+    if (!this.isDuplicate(product)) {
+      this.dataService.addProduct(product).subscribe((result) => {
         this.tableConfig.data.push(result);
         this.form.reset();
       });

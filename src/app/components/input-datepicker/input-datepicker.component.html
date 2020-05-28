@@ -2,11 +2,12 @@
 <input
   type="date"
   class="form-control"
-  [formControl]="ngControl?.control"
+  [(ngModel)]="value"
   [id]="getId()"
   [class.is-invalid]="
     ngControl?.invalid && (ngControl?.touched || ngControl?.dirty)
   "
+  (input)="onInput($event)"
 />
 <ng-container *ngFor="let error of errors">
   <div
