@@ -18,7 +18,8 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) {}
 
-  company: Observable<Company>;
+  company$: Observable<Company>;
+  companyId: number;
   productsSubscription: Subscription;
   states = ['فعال', 'غیرفعال'];
   tableConfig = {
@@ -31,7 +32,6 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     },
     data: new Array<Product>(),
   };
-
   form = new FormGroup({
     companyId: new FormControl(),
     createDate: new FormControl(null, [Validators.required]),
@@ -43,17 +43,17 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
   });
 
   ngOnInit(): void {
-    let companyId = +this.route.snapshot.paramMap.get('companyId');
-    this.company = this.dataService.getCompanyById(companyId);
-    this.form.get('companyId').setValue(companyId);
+    this.companyId = +this.route.snapshot.paramMap.get('companyId');
+    this.company$ = this.dataService.getCompanyById(this.companyId);
     this.productsSubscription = this.dataService
-      .getProdcutsByCompanyId(companyId)
+      .getProdcutsByCompanyId(this.companyId)
       .subscribe((products) => {
         this.tableConfig.data = products;
       });
   }
 
   onSubmit() {
+    this.form.get('companyId').setValue(this.companyId);
     const product = this.form.value as Product;
     if (!this.isDuplicate(product)) {
       this.dataService.addProduct(product).subscribe((result) => {

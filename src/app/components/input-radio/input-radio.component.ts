@@ -1,22 +1,5 @@
-import {
-  Component,
-  OnInit,
-  Optional,
-  Self,
-  Input,
-  Output,
-  EventEmitter,
-  AfterViewInit,
-} from '@angular/core';
-import {
-  ControlValueAccessor,
-  NgControl,
-  FormArray,
-  FormBuilder,
-  FormGroup,
-  FormControl,
-} from '@angular/forms';
-import { InputError } from 'src/app/models/input-error';
+import { Component, OnInit, Optional, Self, Input } from '@angular/core';
+import { ControlValueAccessor, NgControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-input-radio',
@@ -24,10 +7,7 @@ import { InputError } from 'src/app/models/input-error';
   styleUrls: ['./input-radio.component.scss'],
 })
 export class InputRadioComponent implements OnInit, ControlValueAccessor {
-  constructor(
-    private fb: FormBuilder,
-    @Optional() @Self() public ngControl?: NgControl
-  ) {
+  constructor(@Optional() @Self() public ngControl?: NgControl) {
     if (this.ngControl) this.ngControl.valueAccessor = this;
   }
 
@@ -37,7 +17,7 @@ export class InputRadioComponent implements OnInit, ControlValueAccessor {
   @Input() name: string = '';
 
   ngOnInit(): void {}
-  
+
   controlOnChange: (value?: any) => void;
   controlOnTouched: () => void;
 

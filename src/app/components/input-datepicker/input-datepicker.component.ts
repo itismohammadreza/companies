@@ -17,24 +17,16 @@ export class InputDatepickerComponent implements OnInit, ControlValueAccessor {
   @Input() errors: InputError[] = [];
   @Input() placeholder: string = '';
 
-  value: string;
   controlOnChange: (value?: any) => void;
   controlOnTouched: () => void;
 
   ngOnInit(): void {
-    const controlValue = this.ngControl?.control?.value;
-    this.value =
-    controlValue.getMonth() + controlValue.getDate() + controlValue.getYear();
   }
 
   writeValue(obj: any): void {}
 
   registerOnChange(fn: any): void {
     this.controlOnChange = fn;
-  }
-
-  onInput(event) {
-    this.ngControl?.control?.setValue(new Date(event.target.value));
   }
 
   registerOnTouched(fn: any): void {

@@ -1,33 +1,158 @@
 {
   "companies": [
     {
-      "title": "asdasd",
-      "phone": "0215454545",
+      "title": "میهن",
+      "phone": "021-22113344",
       "type": "محصولات غذایی",
       "id": 1
+    },
+    {
+      "title": "شیرین عسل",
+      "phone": "041-5566556",
+      "type": "محصولات غذایی",
+      "id": 3
+    },
+    {
+      "title": "ال جی",
+      "phone": "043-55667788",
+      "type": "لوازم خانگی",
+      "id": 7
+    },
+    {
+      "title": "کاله",
+      "phone": "021-33445566",
+      "type": "محصولات غذایی",
+      "id": 2
+    },
+    {
+      "title": "پارس خزر",
+      "phone": "021-33445533",
+      "type": "لوازم خانگی",
+      "id": 4
+    },
+    {
+      "title": "هواوی",
+      "phone": "021-22222222",
+      "type": "لوازم الکترونیکی",
+      "id": 8
+    },
+    {
+      "title": "سامسونگ",
+      "phone": "021-88998877",
+      "type": "لوازم خانگی",
+      "id": 5
+    },
+    {
+      "title": "بوش",
+      "phone": "026-8898765",
+      "type": "لوازم خانگی",
+      "id": 6
+    },
+    {
+      "title": "نوکیا",
+      "phone": "021-55667744",
+      "type": "لوازم الکترونیکی",
+      "id": 9
     }
   ],
   "products": [
     {
       "companyId": 1,
-      "createDate": "2020-05-06",
-      "title": "asdasd",
+      "createDate": "2020-05-20",
+      "title": "بستی عروسکی",
       "state": "فعال",
       "id": 1
     },
     {
       "companyId": 1,
-      "createDate": "2020-05-13T00:00:00.000Z",
-      "title": "asdasd",
+      "createDate": "2020-03-03",
+      "title": "بستنی قیفی کاکائویی",
       "state": "غیرفعال",
       "id": 2
     },
     {
       "companyId": 1,
-      "createDate": "2020-05-09T00:00:00.000Z",
-      "title": "asdasasd",
-      "state": "فعال",
+      "createDate": "2020-04-29",
+      "title": "بستنی کیم",
+      "state": "غیرفعال",
       "id": 3
+    },
+    {
+      "companyId": 1,
+      "createDate": "2022-10-20",
+      "title": "بستنی لیوانی",
+      "state": "فعال",
+      "id": 4
+    },
+    {
+      "companyId": 3,
+      "createDate": "2020-05-10",
+      "title": "چوب شور",
+      "state": "فعال",
+      "id": 5
+    },
+    {
+      "companyId": 3,
+      "createDate": "2020-05-28",
+      "title": "تاینی",
+      "state": "غیرفعال",
+      "id": 6
+    },
+    {
+      "companyId": 7,
+      "createDate": "2020-05-05",
+      "title": "یخچال ساید بای ساید",
+      "state": "فعال",
+      "id": 7
+    },
+    {
+      "companyId": 2,
+      "createDate": "2020-05-19",
+      "title": "ماست سون",
+      "state": "فعال",
+      "id": 8
+    },
+    {
+      "companyId": 2,
+      "createDate": "2020-05-28",
+      "title": "خامه",
+      "state": "غیرفعال",
+      "id": 9
+    },
+    {
+      "companyId": 4,
+      "createDate": "2020-05-11",
+      "title": "پنکه",
+      "state": "غیرفعال",
+      "id": 10
+    },
+    {
+      "companyId": 5,
+      "createDate": "2020-05-11",
+      "title": "تلوزیون",
+      "state": "غیرفعال",
+      "id": 11
+    },
+    {
+      "companyId": 5,
+      "createDate": "2020-05-06",
+      "title": "جاروبرقی",
+      "state": "غیرفعال",
+      "id": 12
+    },
+    {
+      "companyId": 9,
+      "createDate": "2020-05-10",
+      "title": "گوشی n70",
+      "state": "فعال",
+      "id": 13
+    },
+    {
+      "companyId": 9,
+      "createDate": "2020-05-10",
+      "title": "گوشی n95",
+      "state": "غیرفعال",
+      "id": 14
     }
   ]
 }

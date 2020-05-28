@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>محصولات کمپانی {{ (company | async)?.title }}</h1>
+  <h1>محصولات کمپانی {{ (company$ | async)?.title }}</h1>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <input formControlName="companyId" type="hidden" />
     <app-input-text
